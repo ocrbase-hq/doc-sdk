@@ -20,7 +20,5 @@
   "tabWidth": 2,
   "trailingComma": "es5",
   "useTabs": false,
-  "ignorePatterns": [
-    "CLAUDE.md"
-  ],
+  "ignorePatterns": ["CLAUDE.md"],
 }

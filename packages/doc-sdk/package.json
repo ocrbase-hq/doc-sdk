@@ -1,0 +1,12 @@
+{
+  "name": "doc-sdk",
+  "type": "module",
+  "module": "index.ts",
+  "dependencies": {
+    "@doc-sdk/ocrbase": "workspace:*"
+  },
+  "peerDependencies": {
+    "typescript": "^6.0.2",
+    "zod": "^4.3.6"
+  }
+}

@@ -1,23 +1,24 @@
 {
-  "name": "doc-sdk",
-  "module": "index.ts",
-  "type": "module",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "check": "ultracite check",
     "fix": "ultracite fix",
     "prepare": "lefthook install",
     "typecheck": "tsgo --noEmit"
   },
+  "dependencies": {
+    "@doc-sdk/ocrbase": "workspace:*",
+    "doc-sdk": "workspace:*"
+  },
   "devDependencies": {
     "@types/bun": "latest",
     "@typescript/native-preview": "^7.0.0-dev.20260324.1",
+    "lefthook": "^2.1.4",
     "oxfmt": "^0.42.0",
     "oxlint": "^1.57.0",
-    "ultracite": "7.3.2",
-    "lefthook": "^2.1.4"
-  },
-  "peerDependencies": {
-    "typescript": "^6.0.2",
-    "zod": "^4.3.6"
+    "ultracite": "7.3.2"
   }
 }
