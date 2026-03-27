@@ -20,6 +20,7 @@
     },
     "packages/doc-sdk": {
       "name": "doc-sdk",
+      "version": "0.1.0",
       "dependencies": {
         "@doc-sdk/ocrbase": "workspace:*",
       },
@@ -30,6 +31,7 @@
     },
     "packages/ocrbase": {
       "name": "@doc-sdk/ocrbase",
+      "version": "0.1.0",
       "dependencies": {
         "@elysiajs/eden": "^1.4.8",
         "elysia": "^1.4.28",
@@ -41,6 +43,9 @@
         "typescript": "^6.0.2",
         "zod": "^4.3.6",
       },
+      "optionalPeers": [
+        "ocrbase",
+      ],
     },
   },
   "packages": {
