@@ -1,6 +1,6 @@
+import { createProvider } from "@doc-sdk/core";
+import type { DocumentFile } from "@doc-sdk/core";
 import { treaty } from "@elysiajs/eden";
-import { createProvider } from "doc-sdk";
-import type { DocumentFile } from "doc-sdk";
 import type { ZodType } from "zod";
 import { zodToJsonSchema } from "zod-to-json-schema";
 

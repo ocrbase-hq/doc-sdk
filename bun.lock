@@ -4,8 +4,8 @@
   "workspaces": {
     "": {
       "dependencies": {
+        "@doc-sdk/core": "workspace:*",
         "@doc-sdk/ocrbase": "workspace:*",
-        "doc-sdk": "workspace:*",
       },
       "devDependencies": {
         "@changesets/changelog-github": "^0.6.0",
@@ -19,7 +19,7 @@
       },
     },
     "packages/doc-sdk": {
-      "name": "doc-sdk",
+      "name": "@doc-sdk/core",
       "version": "0.1.0",
       "dependencies": {
         "@doc-sdk/ocrbase": "workspace:*",
@@ -38,7 +38,7 @@
         "zod-to-json-schema": "^3.24.5",
       },
       "peerDependencies": {
-        "doc-sdk": "workspace:*",
+        "@doc-sdk/core": "workspace:*",
         "ocrbase": "*",
         "typescript": "^6.0.2",
         "zod": "^4.3.6",
@@ -94,6 +94,8 @@
     "@clack/core": ["@clack/core@1.1.0", "", { "dependencies": { "sisteransi": "^1.0.5" } }, "sha512-SVcm4Dqm2ukn64/8Gub2wnlA5nS2iWJyCkdNHcvNHPIeBTGojpdJ+9cZKwLfmqy7irD4N5qLteSilJlE0WLAtA=="],
 
     "@clack/prompts": ["@clack/prompts@1.1.0", "", { "dependencies": { "@clack/core": "1.1.0", "sisteransi": "^1.0.5" } }, "sha512-pkqbPGtohJAvm4Dphs2M8xE29ggupihHdy1x84HNojZuMtFsHiUlRvqD24tM2+XmI+61LlfNceM3Wr7U5QES5g=="],
+
+    "@doc-sdk/core": ["@doc-sdk/core@workspace:packages/doc-sdk"],
 
     "@doc-sdk/ocrbase": ["@doc-sdk/ocrbase@workspace:packages/ocrbase"],
 
@@ -250,8 +252,6 @@
     "detect-indent": ["detect-indent@6.1.0", "", {}, "sha512-reYkTUJAZb9gUuZ2RvVCNhVHdg62RHnJ7WJl8ftMi4diZ6NWlciOzQN88pUhSELEwflJht4oQDv0F0BMlwaYtA=="],
 
     "dir-glob": ["dir-glob@3.0.1", "", { "dependencies": { "path-type": "^4.0.0" } }, "sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA=="],
-
-    "doc-sdk": ["doc-sdk@workspace:packages/doc-sdk"],
 
     "dotenv": ["dotenv@8.6.0", "", {}, "sha512-IrPdXQsk2BbzvCBGBOTmmSH5SodmqZNt4ERAZDmW4CT+tL8VtvinqywuANaFu4bOMWki16nqf0e4oC0QIaDr/g=="],
 

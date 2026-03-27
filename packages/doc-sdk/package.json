@@ -1,5 +1,5 @@
 {
-  "name": "doc-sdk",
+  "name": "@doc-sdk/core",
   "version": "0.1.0",
   "files": [
     "index.ts",
