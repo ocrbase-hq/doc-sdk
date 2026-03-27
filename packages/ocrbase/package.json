@@ -1,7 +1,15 @@
 {
   "name": "@doc-sdk/ocrbase",
+  "version": "0.1.0",
+  "files": [
+    "index.ts",
+    "src"
+  ],
   "type": "module",
   "module": "index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@elysiajs/eden": "^1.4.8",
     "elysia": "^1.4.28",

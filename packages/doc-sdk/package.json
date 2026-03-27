@@ -1,7 +1,15 @@
 {
   "name": "doc-sdk",
+  "version": "0.1.0",
+  "files": [
+    "index.ts",
+    "src"
+  ],
   "type": "module",
   "module": "index.ts",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@doc-sdk/ocrbase": "workspace:*"
   },
