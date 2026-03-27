@@ -6,9 +6,7 @@ This is developer first, ultra light weight, provider agnostic TS SDK standardiz
 
 - loads supported providers API_TOKENs from .env
 - parse() # turn document into text
-- streamParse() # stream text from document parse
 - extract() # extract data from document into .json, supports structured outputs
-- streamExtract() # stream json from document extract
 - batchParse() # batch parse
 - batchExtract() # batch extract
 
