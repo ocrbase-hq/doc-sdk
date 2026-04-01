@@ -2,7 +2,6 @@ import { createProvider } from "@doc-sdk/core";
 import type { DocumentFile } from "@doc-sdk/core";
 import { treaty } from "@elysiajs/eden";
 import type { ZodType } from "zod";
-import { zodToJsonSchema } from "zod-to-json-schema";
 
 import type { App } from "./api.ts";
 import { env } from "./env.ts";
@@ -16,56 +15,34 @@ function createClient() {
   });
 }
 
-async function toFile(file: DocumentFile): Promise<File> {
-  if (file instanceof File) {
+function toFileInput(file: DocumentFile): string | File {
+  if (typeof file === "string") {
     return file;
   }
-  if (typeof file === "string") {
-    const res = await fetch(file);
-    const blob = await res.blob();
-    return new File([blob], "document");
-  }
-  if (file instanceof Blob) {
-    return new File([file], "document");
+  if (file instanceof File) {
+    return file;
   }
   return new File([file], "document");
 }
 
 export const ocrbase = createProvider({
-  async extract(
+  extract(
     _modelId: string,
-    file: DocumentFile,
-    schema?: ZodType
+    _file: DocumentFile,
+    _schema?: ZodType
   ): Promise<unknown> {
-    const api = createClient();
-    const f = await toFile(file);
-
-    let jsonSchema: Record<string, unknown> = {};
-    if (schema) {
-      jsonSchema = zodToJsonSchema(
-        schema as unknown as Parameters<typeof zodToJsonSchema>[0]
-      ) as Record<string, unknown>;
-    }
-
-    const { data, error } = await api.v1.extract.post({
-      file: f,
-      schema: jsonSchema,
-    });
-
-    if (error) {
-      throw new Error(
-        `doc-sdk: ocrbase extract failed (${error.status}): ${JSON.stringify(error.value)}`
-      );
-    }
-
-    return data.data;
+    throw new Error(
+      "doc-sdk: ocrbase does not support extract — use parse() instead"
+    );
   },
 
   async parse(_modelId: string, file: DocumentFile): Promise<string> {
     const api = createClient();
-    const f = await toFile(file);
 
-    const { data, error } = await api.v1.parse.post({ file: f });
+    const { data, error } = await api.v1.parse.post({
+      file: toFileInput(file),
+      model: _modelId,
+    });
 
     if (error) {
       throw new Error(
@@ -73,8 +50,7 @@ export const ocrbase = createProvider({
       );
     }
 
-    return data.markdown_result;
+    return (data as { markdown_result: string }).markdown_result;
   },
-
   provider: "ocrbase",
 });
