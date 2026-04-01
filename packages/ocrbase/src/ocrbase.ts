@@ -1,6 +1,6 @@
-import { createProvider } from "@doc-sdk/core";
-import type { DocumentFile } from "@doc-sdk/core";
 import { treaty } from "@elysiajs/eden";
+import { createProvider } from "document-sdk";
+import type { DocumentFile } from "document-sdk";
 import type { ZodType } from "zod";
 
 import type { App } from "./api.ts";
@@ -32,7 +32,7 @@ export const ocrbase = createProvider({
     _schema?: ZodType
   ): Promise<unknown> {
     throw new Error(
-      "doc-sdk: ocrbase does not support extract — use parse() instead"
+      "doc-sdk: ocrbase will suport extract soon — use parse() instead"
     );
   },
 
