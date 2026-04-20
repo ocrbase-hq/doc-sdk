@@ -1,25 +1,20 @@
 import type { DocumentModel } from "./types.ts";
 
 export interface DocSdkConfig {
-  model: DocumentModel;
+  model?: DocumentModel;
 }
 
-let defaultModel: DocumentModel | undefined;
+let config: DocSdkConfig = {};
 
-export function configure(config: DocSdkConfig): void {
-  defaultModel = config.model;
+export function configure(nextConfig: DocSdkConfig) {
+  config = nextConfig;
 }
 
-export async function resolveModel(): Promise<DocumentModel | undefined> {
-  if (defaultModel) {
-    return defaultModel;
+export async function resolveModel(): Promise<DocumentModel> {
+  if (config.model) {
+    return config.model;
   }
 
-  try {
-    const { ocrbase } = await import("@doc-sdk/ocrbase");
-    defaultModel = ocrbase("glm-ocr");
-    return defaultModel;
-  } catch {
-    return undefined;
-  }
+  const { ocrbase } = await import("@doc-sdk/ocrbase");
+  return ocrbase("paddleocr");
 }
