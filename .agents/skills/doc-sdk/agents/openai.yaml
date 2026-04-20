@@ -1,0 +1,6 @@
+interface:
+  display_name: "doc-sdk"
+  short_description: "Implement doc-sdk document parsing in apps"
+  default_prompt: "Use $doc-sdk to add typed document parsing and extraction to this TypeScript project."
+policy:
+  allow_implicit_invocation: true
