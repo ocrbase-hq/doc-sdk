@@ -27,21 +27,23 @@
 
 ## 🔌 Providers
 
-- **[ocrbase](https://ocrbase.dev)** — `@doc-sdk/ocrbase`
-- **[mistral](https://github.com/mistralai/client-ts)** — `@doc-sdk/mistral`
-- **[llamaparse](https://github.com/run-llama/llama-cloud-ts)** — `@doc-sdk/llamaparse`
-- **[azure](https://github.com/Azure/azure-sdk-for-js)** — `@doc-sdk/azure`
+| Provider               | Price ($ / 1k pages) |
+| ---------------------- | -------------------- |
+| ocrbase                | 1$                   |
+| Mistral OCR            | 2$                   |
+| LlamaParse             | 3.75$                |
+| Azure Doc Intelligence | 10–30$               |
+| AWS Textract           | 15–50$               |
+| Extend AI\*            | 10–15$               |
+| Reducto\*              | 5–10$                |
+| Unstructured\*         | 30$                  |
+
+\*Sales call required. Only `ocrbase` is available today — other providers are coming soon.
 
 ## 🚀 Quick Start
 
 ```sh
 bun i document-sdk
-```
-
-Set your provider credentials in `.env`:
-
-```sh
-OCRBASE_API_KEY=sk_...
 ```
 
 Parse a document:
@@ -71,32 +73,34 @@ const { output } = await extract({
 });
 ```
 
-## 🎛️ Picking a Provider
+Set your provider credentials in `.env` eg. using:
 
-By default, `doc-sdk` auto-resolves `@doc-sdk/ocrbase` if installed. Override via `configure()` or pass a model per call:
+**[Generate ocrbase api key](https://ocrbase.dev/playground/api-keys)**
 
-```ts
-import { configure } from "document-sdk";
-import { llamaparse } from "@doc-sdk/llamaparse";
-
-configure({ model: llamaparse("cost-effective") });
+```sh
+OCRBASE_API_KEY=
 ```
 
-Or inline:
+## 🎛️ Picking a Provider
+
+By default, `doc-sdk` auto-resolves `@doc-sdk/ocrbase` if installed. Override via pass a model per call:
+
+```ts
+import { parse } from "document-sdk";
+import { ocrbase } from "@doc-sdk/ocrbase";
+
+await parse({
+  model: ocrbase("paddleocr"),
+  file: "invoice.pdf",
+});
+```
 
 ```ts
 import { parse } from "document-sdk";
 import { mistral } from "@doc-sdk/mistral";
 
 await parse({
-  file: "invoice.pdf",
   model: mistral("mistral-ocr-latest"),
+  file: "invoice.pdf",
 });
-```
-
-## 🛠️ Develop
-
-```sh
-bun install
-bun run typecheck
 ```
